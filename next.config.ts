@@ -14,7 +14,10 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
     // YouTube thumbnails for the playlist chapter.
-    remotePatterns: [new URL("https://i.ytimg.com/vi/**")],
+    remotePatterns: [
+      new URL("https://i.ytimg.com/vi/**"),
+      new URL("https://res.cloudinary.com/dhlsvwpny/image/upload/**"),
+    ],
   },
 };
 

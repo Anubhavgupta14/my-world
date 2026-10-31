@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useEffect, useEffectEvent, useState, type CSSProperties } from "react";
-import doctorPhoto from "../../../public/D.png";
 import { KEY_LINE, LETTER } from "@/lib/content";
 import { sound } from "@/lib/sound";
 import { Envelope } from "../Envelope";
@@ -43,6 +42,8 @@ const LOVE_HEARTS = Array.from({ length: 12 }, (_, i) => ({
   dur: 11 + ((i * 5) % 9),
   delay: -((i * 1.7) % 14),
 }));
+
+const DOCTOR_PHOTO = "https://res.cloudinary.com/dhlsvwpny/image/upload/v1793473071/D_ygdss4.png";
 
 type Phase = "sealed" | "opening" | "letter";
 
@@ -159,9 +160,10 @@ export default function SecretEnvelope() {
               <figure className={`polaroid ${finished ? "show" : ""}`}>
                 <span className="tape" aria-hidden />
                 <Image
-                  src={doctorPhoto}
+                  src={DOCTOR_PHOTO}
                   alt=""
-                  placeholder="blur"
+                  width={800}
+                  height={1000}
                   sizes="(max-width: 640px) 46vw, 200px"
                   className="polaroid-img"
                 />

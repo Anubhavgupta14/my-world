@@ -109,7 +109,6 @@ src/
 ## Good to know
 
 - **Her answer isn't sent anywhere.** The site has no backend, so the final choice only shows on her screen, and the page says so gently. If you'd like a way for her to reply, you could add a WhatsApp or email link in `FinalQuestion.tsx`.
-- **Privacy:** the page sets `noindex, nofollow`, so search engines won't list it. Anyone with the link can still open it, and the photo is reachable at `/D.png`.
 - **Sound** starts off. She can turn it on from the welcome screen or the top bar. Music pauses automatically when the tab is hidden.
 - **Accessibility:** everything is a real button, works with a keyboard, moves focus to each new chapter's heading, and gives screen readers the full letter immediately.
 
