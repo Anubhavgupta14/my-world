@@ -222,7 +222,7 @@ export const POSSIBILITIES = [
 /* ---------- Chapter: The Secret Envelope ---------- */
 
 /** The confession — the original wording, plus a P.S. */
-export const LETTER = `Dear Doctor,
+export const LETTER = `Dear Dhruvi,
 
 I don't know how to explain it perfectly, but I genuinely enjoy talking to you.
 
