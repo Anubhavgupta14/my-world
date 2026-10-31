@@ -12,6 +12,10 @@ const nextConfig: NextConfig = {
     },
   },
   reactStrictMode: true,
+  images: {
+    // YouTube thumbnails for the playlist chapter.
+    remotePatterns: [new URL("https://i.ytimg.com/vi/**")],
+  },
 };
 
 export default nextConfig;
