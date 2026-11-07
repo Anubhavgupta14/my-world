@@ -1,11 +1,11 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { Caveat, DM_Sans, Playfair_Display } from "next/font/google";
+import { useEffect } from "react";
+import { Caveat, DM_Sans, Fredoka } from "next/font/google";
 
-const playfair = Playfair_Display({
+const fredoka = Fredoka({
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  variable: "--font-playfair",
+  variable: "--font-fredoka",
   display: "swap",
 });
 
@@ -21,9 +21,16 @@ const caveat = Caveat({
   display: "swap",
 });
 
+const fontVars = [fredoka.variable, dmSans.variable, caveat.variable];
+
 export default function App({ Component, pageProps }: AppProps) {
+  // Sheets are portalled to <body>, so the font variables live on <html> too.
+  useEffect(() => {
+    document.documentElement.classList.add(...fontVars, "font-body");
+  }, []);
+
   return (
-    <div className={`${playfair.variable} ${dmSans.variable} ${caveat.variable} font-body`}>
+    <div className={`${fredoka.variable} ${dmSans.variable} ${caveat.variable} font-body`}>
       <Component {...pageProps} />
     </div>
   );
