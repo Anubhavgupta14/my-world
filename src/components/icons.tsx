@@ -1,114 +1,121 @@
 import type { SVGProps } from "react";
 
-type P = SVGProps<SVGSVGElement>;
+type IconProps = SVGProps<SVGSVGElement>;
 
-const base = (p: P) => ({
+const base = {
   width: 24,
   height: 24,
   viewBox: "0 0 24 24",
   fill: "none",
   stroke: "currentColor",
-  strokeWidth: 2,
+  strokeWidth: 1.8,
   strokeLinecap: "round" as const,
   strokeLinejoin: "round" as const,
   "aria-hidden": true,
-  ...p,
-});
+  focusable: false,
+};
 
-export const HomeIcon = (p: P) => (
-  <svg {...base(p)}>
-    <path d="M3 10.5 12 3l9 7.5" />
-    <path d="M5.5 9v10.5a1 1 0 0 0 1 1H10v-6h4v6h3.5a1 1 0 0 0 1-1V9" />
-  </svg>
-);
+export const HEART_PATH =
+  "M12 20.6s-7.6-4.7-9.9-9.4C.6 8.1 2.3 4.2 6 3.8c2.1-.2 4.1 1 6 3.2 1.9-2.2 3.9-3.4 6-3.2 3.7.4 5.4 4.3 3.9 7.4-2.3 4.7-9.9 9.4-9.9 9.4z";
 
-export const CalendarIcon = (p: P) => (
-  <svg {...base(p)}>
-    <rect x="3.5" y="5" width="17" height="15.5" rx="3.5" />
-    <path d="M3.5 10h17M8 3v4M16 3v4" />
-    <circle cx="12" cy="15" r="1.4" fill="currentColor" stroke="none" />
-  </svg>
-);
+export const SPARKLE_PATH =
+  "M12 0C12.7 7.3 16.7 11.3 24 12 16.7 12.7 12.7 16.7 12 24 11.3 16.7 7.3 12.7 0 12 7.3 11.3 11.3 7.3 12 0Z";
 
-export const HeartIcon = (p: P) => (
-  <svg {...base(p)}>
-    <path d="M12 20s-7.5-4.6-9.3-9.2C1.4 7.4 3.6 4 7 4c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8C19.5 15.4 12 20 12 20Z" />
-  </svg>
-);
+export function HeartIcon(props: IconProps) {
+  return (
+    <svg {...base} stroke="none" fill="currentColor" {...props}>
+      <path d={HEART_PATH} />
+    </svg>
+  );
+}
 
-export const UserIcon = (p: P) => (
-  <svg {...base(p)}>
-    <circle cx="12" cy="8.5" r="4" />
-    <path d="M4.5 20.5c1.2-3.8 4-5.5 7.5-5.5s6.3 1.7 7.5 5.5" />
-  </svg>
-);
+export function SparkleIcon(props: IconProps) {
+  return (
+    <svg {...base} stroke="none" fill="currentColor" {...props}>
+      <path d={SPARKLE_PATH} />
+    </svg>
+  );
+}
 
-export const PhoneIcon = (p: P) => (
-  <svg {...base(p)}>
-    <path d="M5 3.5h3.2l1.6 4.2-2.1 1.4a11 11 0 0 0 5.2 5.2l1.4-2.1 4.2 1.6V17a2.5 2.5 0 0 1-2.7 2.5C9.6 19 5 14.4 4.5 6.2A2.5 2.5 0 0 1 5 3.5Z" />
-  </svg>
-);
+/** A soft, glossy little rasgulla (her favourite). */
+export function RasgullaIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 48 48" aria-hidden focusable={false} {...props}>
+      <ellipse cx="24" cy="42" rx="15" ry="3.5" fill="rgba(235, 190, 110, 0.45)" />
+      <circle cx="24" cy="24" r="17" fill="#fbf4e6" />
+      <circle cx="24" cy="24" r="17" fill="none" stroke="#e9d6b4" strokeWidth="1.2" />
+      <path d="M10 30a17 17 0 0 0 28 0" fill="none" stroke="#efdfc2" strokeWidth="3" strokeLinecap="round" />
+      <ellipse cx="17.5" cy="16" rx="5.5" ry="3.4" fill="#fff" transform="rotate(-32 17.5 16)" />
+      <circle cx="29" cy="29" r="1.3" fill="#ead6b2" />
+      <circle cx="21" cy="32" r="1" fill="#ead6b2" />
+      <circle cx="32" cy="20" r="0.9" fill="#ead6b2" />
+    </svg>
+  );
+}
 
-export const ChatIcon = (p: P) => (
-  <svg {...base(p)}>
-    <path d="M20.5 11.5a8.5 8 0 0 1-12.3 7.2L3.5 20l1.4-4.1A7.6 7.6 0 0 1 3.5 11.5 8.5 8 0 0 1 20.5 11.5Z" />
-  </svg>
-);
+export function MapIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M4 6.5 9 4l6 2.5L20 4v13.5L15 20l-6-2.5L4 20z" />
+      <path d="M9 4v13.5M15 6.5V20" />
+    </svg>
+  );
+}
 
-export const ChevronLeft = (p: P) => (
-  <svg {...base(p)}>
-    <path d="m15 5-7 7 7 7" />
-  </svg>
-);
+export function MusicIcon({ off, ...props }: IconProps & { off?: boolean }) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M9 18V5l11-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="17" cy="16" r="3" />
+      {off && <path d="M3 3l18 18" />}
+    </svg>
+  );
+}
 
-export const ChevronRight = (p: P) => (
-  <svg {...base(p)}>
-    <path d="m9 5 7 7-7 7" />
-  </svg>
-);
+export function SpeakerIcon({ off, ...props }: IconProps & { off?: boolean }) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M11 5 6 9H3v6h3l5 4z" />
+      {off ? (
+        <path d="m16 9 5 5m0-5-5 5" />
+      ) : (
+        <path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" />
+      )}
+    </svg>
+  );
+}
 
-export const CloseIcon = (p: P) => (
-  <svg {...base(p)}>
-    <path d="M6 6l12 12M18 6 6 18" />
-  </svg>
-);
+export function CloseIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M6 6l12 12M18 6 6 18" />
+    </svg>
+  );
+}
 
-export const RefreshIcon = (p: P) => (
-  <svg {...base(p)}>
-    <path d="M20 11a8 8 0 1 0-2.3 5.7" />
-    <path d="M20 4v7h-7" />
-  </svg>
-);
+export function ArrowLeftIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M19 12H5M11 6l-6 6 6 6" />
+    </svg>
+  );
+}
 
-export const SparkleIcon = (p: P) => (
-  <svg {...base({ fill: "currentColor", stroke: "none", ...p })}>
-    <path d="M12 2c.6 5.3 3.7 8.4 9 9-5.3.6-8.4 3.7-9 9-.6-5.3-3.7-8.4-9-9 5.3-.6 8.4-3.7 9-9Z" />
-  </svg>
-);
+export function ReplayIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M3 12a9 9 0 1 0 3-6.7" />
+      <path d="M3 3v5h5" />
+    </svg>
+  );
+}
 
-export const PlayIcon = (p: P) => (
-  <svg {...base({ fill: "currentColor", stroke: "none", ...p })}>
-    <path d="M8 5.2v13.6a1 1 0 0 0 1.5.9l10.6-6.8a1 1 0 0 0 0-1.7L9.5 4.3A1 1 0 0 0 8 5.2Z" />
-  </svg>
-);
-
-export const WandIcon = (p: P) => (
-  <svg {...base(p)}>
-    <path d="M5 19 16 8" />
-    <path d="M16 8l3-3-1-1-3 3" />
-    <path d="M18.5 2.5 19 4l1.5.5L19 5l-.5 1.5L18 5l-1.5-.5L18 4z" fill="currentColor" stroke="none" />
-    <path d="M6 4l.4 1.2L7.5 5.6 6.4 6 6 7.2 5.6 6 4.5 5.6 5.6 5.2z" fill="currentColor" stroke="none" />
-  </svg>
-);
-
-export const MinusIcon = (p: P) => (
-  <svg {...base(p)}>
-    <path d="M5 12h14" />
-  </svg>
-);
-
-export const PlusIcon = (p: P) => (
-  <svg {...base(p)}>
-    <path d="M12 5v14M5 12h14" />
-  </svg>
-);
+export function LockIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="5" y="11" width="14" height="9" rx="2" />
+      <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+    </svg>
+  );
+}
